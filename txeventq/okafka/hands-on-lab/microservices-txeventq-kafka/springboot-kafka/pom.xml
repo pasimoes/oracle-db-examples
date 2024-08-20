@@ -50,12 +50,6 @@
         <avro.version>1.12.0</avro.version>
     </properties>
 
-    <!--
-    Upgrade from Spring Boot 2.6.1 to 2.6.2
-    Log4J2 Vulnerability and Spring Boot
-    Ref: https://spring.io/blog/2021/12/10/log4j2-vulnerability-and-spring-boot
-    -->
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -162,9 +156,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <release>${java.version}</release>
-                </configuration>
             </plugin>
         </plugins>
         <pluginManagement>

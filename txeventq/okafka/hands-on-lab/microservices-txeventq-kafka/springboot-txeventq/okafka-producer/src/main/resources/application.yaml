@@ -12,15 +12,15 @@ spring:
     name: okafka-producer
   profiles:
     active: kubernetes
-  cloud:
-    kubernetes:
-      reload:
-        enabled: true
-        mode: POLLING
-        period: 2000
-      config:
-        name: okafka-producer-config
-        namespace: lab
+#  cloud:
+#    kubernetes:
+#      reload:
+#        enabled: true
+#        mode: POLLING
+#        period: 2000
+#      config:
+#        name: okafka-producer-config
+#        namespace: lab
 
 management:
   endpoints:
@@ -48,20 +48,27 @@ logging:
 
 okafka-server-config:
   oracle-instance-name: LAB_DB_SVC
-  oracle-service-name: SERVICE_NAME
-  oracle-net-tns_admin: /home/appuser/wallet
+  oracle-service-name: FREEPDB1
+  oracle-net-tns_admin: /Users/pasimoes/Work/Oracle/Code/oracle-db-examples/txeventq/okafka/hands-on-lab/microservices-txeventq-kafka/springboot-txeventq/
   tns-alias: LAB_DB_SVC
-  security-protocol: SSL
-  bootstrap-servers: BOOTSTRAP_SRV
+  security-protocol: PLAINTEXT
+  bootstrap-servers: 84.235.165.28:1521
+#  oracle-instance-name: LAB_DB_SVC
+#  oracle-service-name: SERVICE_NAME
+#  oracle-net-tns_admin: /home/appuser/wallet
+#  tns-alias: LAB_DB_SVC
+#  security-protocol: SSL
+#  bootstrap-servers: BOOTSTRAP_SRV
 
 okafka-topic-config:
-  topic-name: TXEVENTQ_TOPIC_NAME
+#  topic-name: TXEVENTQ_TOPIC_NAME
+  topic-name: TXEQ
   num-of-partitions: 3
   replication-factor: 1
 
 okafka-producer-config:
-  key-serializer-class: org.oracle.okafka.common.serialization.StringSerializer
-  value-serializer-class: org.oracle.okafka.common.serialization.StringSerializer
+  key-serializer-class: org.apache.kafka.common.serialization.StringSerializer
+  value-serializer-class: org.apache.kafka.common.serialization.StringSerializer
   compression-type: snappy
   acks: all
   batch-size: 200
@@ -70,3 +77,4 @@ okafka-producer-config:
   request-timeout-ms: 60000
   retry-count: 5
   buffer-memory: 335544
+  enable-idempotence: true

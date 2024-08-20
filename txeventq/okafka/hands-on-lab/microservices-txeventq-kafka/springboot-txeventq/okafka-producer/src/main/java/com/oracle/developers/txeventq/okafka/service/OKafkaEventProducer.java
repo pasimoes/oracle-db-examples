@@ -8,7 +8,10 @@ package com.oracle.developers.txeventq.okafka.service;
 import com.oracle.developers.txeventq.okafka.config.data.LabEventData;
 import com.oracle.developers.txeventq.okafka.config.data.OKafkaConfigData;
 import com.oracle.developers.txeventq.okafka.config.data.OKafkaTopicConfigData;
-import org.oracle.okafka.clients.producer.ProducerRecord;
+
+import org.apache.kafka.clients.producer.ProducerRecord;
+
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
